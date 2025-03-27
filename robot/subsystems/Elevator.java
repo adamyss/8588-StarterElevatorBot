@@ -38,6 +38,8 @@ public class Elevator extends SubsystemBase {
   }
 
   public void reachGoal(double goal) {
+
+    //TODO- get correct feedforward calculation, and adjust voltsOut as needed
     double feedForward;
     double voltsOut = MathUtil.clamp(
         m_elevatorLeftController.calculate(getHeightMeters(), goal) + 7/*
