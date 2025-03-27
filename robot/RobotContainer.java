@@ -126,7 +126,7 @@ public class RobotContainer {
     new JoystickButton(m_driverController, Button.kCircle.value)
       .whileTrue(m_robotDrive.sysIdDynamic(SysIdRoutine.Direction.kReverse));*/
 
-    // TINY DUMPSTER (LOCK CORAL)
+    // ELEVATOR KEY BINDS
      new JoystickButton(m_driverController, Button.kCross.value)
             .whileTrue(m_elevator.setElevatorHeight(ElevatorConstants.kL1Height));
         new JoystickButton(m_driverController, PS4Controller.Button.kCircle.value)
@@ -136,6 +136,45 @@ public class RobotContainer {
         new JoystickButton(m_driverController, PS4Controller.Button.kTriangle.value)
             .whileTrue(m_elevator.setElevatorHeight(ElevatorConstants.kL4Height));
 
+     // Effector
+    new JoystickButton(m_driverController, Button.kR2.value)
+        .whileTrue(new StartEndCommand(
+            () -> {
+              m_endeffector.runEffector(-1);
+            },
+            () -> {
+              m_endeffector.runEffector(0);
+            }));
+
+    // REVERSE Effector
+    new JoystickButton(m_driverController, Button.kL2.value)
+    .whileTrue(new StartEndCommand(
+        () -> {
+          m_endeffector.runEffector(1);
+        },
+        () -> {
+          m_endeffector.runEffector(0);
+        }));
+        
+          // Party Hat
+    new JoystickButton(m_driverController, Button.kR1.value)
+    .whileTrue(new StartEndCommand(
+        () -> {
+          m_partyhat.runPartyHat(-1);
+        },
+        () -> {
+          m_partyhat.runPartyHat(0);
+        }));
+
+// REVERSE Party Hat
+new JoystickButton(m_driverController, Button.kL1.value)
+.whileTrue(new StartEndCommand(
+    () -> {
+      m_partyhat.runPartyHat(1);
+    },
+    () -> {
+      m_partyhat.runPartyHat(0);
+    }));
 
     new JoystickButton(m_driverController, Button.kSquare.value)
     .whileTrue(new InstantCommand(
